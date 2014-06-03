@@ -1,0 +1,25 @@
+# Please make sure to update the license_key information with the license key for your New Relic
+# account.
+#
+#
+newrelic:
+  #
+  # Update with your New Relic account license key:
+  #
+  license_key: '7b0aac7085d267d9f7ad5d2d51559c8af603337f'
+  #
+  # Set to '1' for verbose output, remove for normal output.
+  # All output goes to stdout/stderr.
+  #
+  # verbose: 1
+#
+# Agent Configuration:
+#
+agents:
+  # this is where configuration for agents belongs
+  example:
+    google_storage_key_path: "f7879143c6e41b20bf4bf5140cb28926f26083d6-privatekey.p12"
+    google_storage_key_secret: "notasecret" 
+    google_storage_mail: "1067891787564-474o2229sh226ns7u5fcnpa2hga7h5fb@developer.gserviceaccount.com"
+    google_storage_project_id: "delta-coil-535"
+    google_storage_bucket_name: "backup-reseaujeunesse-ch" 
