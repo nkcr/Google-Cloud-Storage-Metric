@@ -15,31 +15,52 @@ require_relative 'modules/googleAuth'
 
 module ExampleAgent
 
+  #
+  # Agent, Metric and PollCycle classes
+  #
+  # Each agent module must have an Agent, Metric and PollCycle class that inherits from their
+  # Component counterparts as you can see below.
+  #
+
   class Agent < NewRelic::Plugin::Agent::Base
-    agent_guid "ch.nkcr.test.google_cloud_storage_metric"
+    agent_guid "ch.nkcr.test.google_cloud_storage_metric2"
     agent_version "1.0.1"
+    #
+    # agent_config is a list of variables that the component will need
+    # from its instances.
+    #
     agent_config_options :google_storage_bucket_name, :google_storage_key_path,:google_storage_key_secret,:google_storage_mail
     agent_human_labels("Example Agent") { "Synthetic example data" }
 
     def setup_metrics
       @google = GClient.new(google_storage_key_path,google_storage_key_secret,google_storage_mail)
-      @last_time = Time.now
+      @next_hour = next_hour(Time.now.hour)
       @last_number = @google.number(google_storage_bucket_name)
       @current_dif = 0
+      @elements_rate = NewRelic::Processor::EpochCounter.new
     end
 
     def poll_cycle
       report_metric "Total/size", "Megabytes", @google.size(google_storage_bucket_name)
       number = @google.number(google_storage_bucket_name)
       report_metric "Total/elements", "Elements", number
-      now = Time.now
-      if now <= (@last_time + 60)
-        @last_time = now
+      now_hour = Time.now.hour
+      if now_hour == @next_hour
+        @next_hour = next_hour(now_hour)
         @current_dif = number - @last_number
         @last_number = number
-        puts "i go"
+        puts "[#{Time.now}] i go"
       end
-      report_metric "Difference/2min", "Elements", @current_dif
+      report_metric "Difference/2", "Elements", @current_dif
+      report_metric "Difference/rate", "Elements", @elements_rate.process(number)
+    end
+
+    def next_hour(hour)
+      if hour == 23
+        return 0
+      else
+        return hour + 1
+      end
     end
 
   end

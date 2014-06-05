@@ -22,7 +22,7 @@ class GClient < Google::APIClient
       objects_list_result.data.items.each { |item| total = total + item.size }
       page_token = objects_list_result.next_page_token
     end
-    puts "Total bytes in #{bucket}: #{total/1048576} Megabytes"
+    puts "[#{Time.now}] Total bytes in #{bucket}: #{total/1048576} Megabytes"
     return total / 1048576
   end
 
@@ -37,7 +37,7 @@ class GClient < Google::APIClient
       objects_list_result.data.items.each { |item| total = total + 1 }
       page_token = objects_list_result.next_page_token
     end
-    puts "Total bytes in #{bucket}: #{total} Eléments"
+    puts "[#{Time.now}] Total bytes in #{bucket}: #{total} Eléments"
     return total
   end
 
