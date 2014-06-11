@@ -34,7 +34,7 @@ module ExampleAgent
 
     def setup_metrics
       @google = GClient.new(google_storage_key_path,google_storage_key_secret,google_storage_mail)
-      @next_hour = (Time.now + 86400).day
+      @next_day = (Time.now + 86400).day
       @last_number = @google.number(google_storage_bucket_name)
       @current_dif = 0
       @elements_rate = NewRelic::Processor::EpochCounter.new
@@ -46,8 +46,8 @@ module ExampleAgent
       report_metric "Total/size", "Megabytes", tot_size
       report_metric "Total/elements", "Elements", number
       current_day = Time.now.day
-      if now_hour == @next_hour
-        @next_hour = (Time.now + 86400).day
+      if current_day == @next_day
+        @next_day = (Time.now + 86400).day
         @current_dif = number - @last_number
         @last_number = number
         puts "[#{Time.now}] i go"
@@ -55,14 +55,6 @@ module ExampleAgent
       report_metric "Difference/day", "Elements", @current_dif
       report_metric "Difference/rate/elements", "Elements", @elements_rate.process(number)
       report_metric "Difference/rate/size", "Elements", @elements_rate.process(number)
-    end
-
-    def next_hour(hour)
-      if hour == 23
-        return 0
-      else
-        return hour + 1
-      end
     end
 
   end
