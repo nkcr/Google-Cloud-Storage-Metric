@@ -1,6 +1,7 @@
 # Description
 
-New-Relic plugin to monitor your google cloud storage activity. 
+New-Relic plugin to monitor your google cloud storage activity.<br>
+A key point to keep backups in sight !
 <p align="center"><img src="http://s27.postimg.org/p8rtjh2db/Untitled_1.png"></p>
 
 ----
