@@ -33,7 +33,7 @@ This should install the newrelic and google SDK
 
 - Fill the config/newrelic_plugin.yml file :
 
-| Paramater                   | Description         |
+| Parameter                   | Description         |
 | :-------------------------- | :---------------    |
 | google_storage_key_path     | The relative path of your _service account key_ |
 | google_storage_key_secret   | The secret of your key (default is _notasecret_) |
