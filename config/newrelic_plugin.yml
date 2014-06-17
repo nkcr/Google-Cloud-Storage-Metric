@@ -17,7 +17,7 @@ newrelic:
 #
 agents:
   # this is where configuration for agents belongs
-  example:
+  gcstorage:
     google_storage_key_path: "f7879143c6e41b20bf4bf5140cb28926f26083d6-privatekey.p12"
     google_storage_key_secret: "notasecret" 
     google_storage_mail: "1067891787564-474o2229sh226ns7u5fcnpa2hga7h5fb@developer.gserviceaccount.com"
