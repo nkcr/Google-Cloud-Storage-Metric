@@ -30,7 +30,7 @@ module GCloudStorageAgent
     # from its instances.
     #
     agent_config_options :google_storage_bucket_name, :google_storage_key_path,:google_storage_key_secret,:google_storage_mail
-    agent_human_labels("GCloud Storage") { "Bucket /#{google_storage_bucket_name} data" }
+    agent_human_labels("GCloud Storage") { "Bucket /#{google_storage_bucket_name}" }
 
     def setup_metrics
       @google = GClient.new(google_storage_key_path,google_storage_key_secret,google_storage_mail)
