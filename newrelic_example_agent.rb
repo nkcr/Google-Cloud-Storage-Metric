@@ -43,7 +43,7 @@ module ExampleAgent
     def poll_cycle
       number = @google.number(google_storage_bucket_name)
       tot_size = @google.size(google_storage_bucket_name)
-      report_metric "Total/size", "Megabytes", tot_size
+      report_metric "Total/size", "Bytes", tot_size
       report_metric "Total/elements", "Elements", number
       current_day = Time.now.day
       if current_day == @next_day
@@ -54,7 +54,7 @@ module ExampleAgent
       end
       report_metric "Difference/day", "Elements", @current_dif
       report_metric "Difference/rate/elements", "Elements", @elements_rate.process(number)
-      report_metric "Difference/rate/size", "Elements", @elements_rate.process(number)
+      report_metric "Difference/rate/size", "Elements", @elements_rate.process(tot_size)
     end
 
   end
