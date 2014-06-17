@@ -1,9 +1,9 @@
 #! /usr/bin/env ruby
 
 #
-# This is an example agent which generates synthetic data.
-# A 1mHz (one cycle every 16 minutes) sin+1, cos+1 and sin+5 wave is generated,
-# using the Unix epoch as the base.
+# This module is an agent that provides metric for
+# a google cloud storage buket
+# Please fill the config file before run
 #
 
 require "rubygems"
@@ -13,7 +13,7 @@ require "newrelic_plugin"
 
 require_relative 'modules/googleAuth'
 
-module ExampleAgent
+module GCloudStorageAgent
 
   #
   # Agent, Metric and PollCycle classes
@@ -23,14 +23,14 @@ module ExampleAgent
   #
 
   class Agent < NewRelic::Plugin::Agent::Base
-    agent_guid "ch.nkcr.test.google_cloud_storage_metric2"
+    agent_guid "ch.nkcr.test.google_cloud_storage_metric3"
     agent_version "1.0.1"
     #
     # agent_config is a list of variables that the component will need
     # from its instances.
     #
     agent_config_options :google_storage_bucket_name, :google_storage_key_path,:google_storage_key_secret,:google_storage_mail
-    agent_human_labels("Example Agent") { "Synthetic example data" }
+    agent_human_labels("GCloud Storage") { "Bucket /#{:google_storage_bucket_name} data" }
 
     def setup_metrics
       @google = GClient.new(google_storage_key_path,google_storage_key_secret,google_storage_mail)
@@ -62,11 +62,11 @@ module ExampleAgent
 
   #
   # Register this agent with the component.
-  # The ExampleAgent is the name of the module that defines this
+  # The GCStorageAgent is the name of the module that defines this
   # driver (the module must contain at least three classes - a
   # PollCycle, a Metric and an Agent class, as defined above).
   #
-  NewRelic::Plugin::Setup.install_agent :example, ExampleAgent
+  NewRelic::Plugin::Setup.install_agent :gcstorage, GCloudStorageAgent
 
   #
   # Launch the agent; this never returns.
