@@ -5,6 +5,15 @@ A key point to keep backups in sight !
 **Check my [other repo](https://github.com/nkcr/Google-Cloud-Storage-Upload) to kackup your database on google cloud storage !**
 <p align="center"><img src="http://s27.postimg.org/p8rtjh2db/Untitled_1.png"></p>
 
+## Metrics
+
+- Total size 
+- Total elements
+- Size rate
+- Elements rate
+- Number of new elements within a day
+- Size gained within a day
+
 ----
 
 # Requirements
