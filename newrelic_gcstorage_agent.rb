@@ -36,7 +36,9 @@ module GCloudStorageAgent
       @google = GClient.new(google_storage_key_path,google_storage_key_secret,google_storage_mail)
       @next_day = (Time.now + 86400).day
       @last_number = @google.number(google_storage_bucket_name)
-      @current_dif = 0
+      @last_size = @google.size(google_storage_bucket_name)
+      @current_element_dif = 0
+      @current_size_dif = 0
       @elements_rate = NewRelic::Processor::EpochCounter.new
       @size_rate = NewRelic::Processor::EpochCounter.new
     end
@@ -49,11 +51,14 @@ module GCloudStorageAgent
       current_day = Time.now.day
       if current_day == @next_day
         @next_day = (Time.now + 86400).day
-        @current_dif = number - @last_number
+        @current_element_dif = number - @last_number
         @last_number = number
+        @current_size_dif = tot_size - @last_size
+        @last_size = tot_size
         puts "[#{Time.now}] i go"
       end
-      report_metric "Difference/day", "Elements", @current_dif
+      report_metric "Difference/day/elements", "Elements", @current_element_dif
+      report_metric "Difference/day/size", "Bytes", @current_size_dif
       report_metric "Difference/rate/elements", "Elements", @elements_rate.process(number)
       report_metric "Difference/rate/size", "Elements", @size_rate.process(tot_size)
     end
