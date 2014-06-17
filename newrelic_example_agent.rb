@@ -38,6 +38,7 @@ module ExampleAgent
       @last_number = @google.number(google_storage_bucket_name)
       @current_dif = 0
       @elements_rate = NewRelic::Processor::EpochCounter.new
+      @size_rate = NewRelic::Processor::EpochCounter.new
     end
 
     def poll_cycle
@@ -54,7 +55,7 @@ module ExampleAgent
       end
       report_metric "Difference/day", "Elements", @current_dif
       report_metric "Difference/rate/elements", "Elements", @elements_rate.process(number)
-      report_metric "Difference/rate/size", "Elements", @elements_rate.process(tot_size)
+      report_metric "Difference/rate/size", "Elements", @size_rate.process(tot_size)
     end
 
   end
