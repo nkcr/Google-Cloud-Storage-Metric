@@ -1,7 +1,8 @@
 # Description
 
 New-Relic plugin to monitor your google cloud storage activity.  
-A key point to keep backups in sight !
+A key point to keep backups in sight !  
+**Check my [other repo](https://github.com/nkcr/Google-Cloud-Storage-Upload) to kackup your database on google cloud storage !**
 <p align="center"><img src="http://s27.postimg.org/p8rtjh2db/Untitled_1.png"></p>
 
 ----
