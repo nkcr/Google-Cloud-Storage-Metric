@@ -60,7 +60,7 @@ module GCloudStorageAgent
       report_metric "Difference/day/elements", "Elements", @current_element_dif
       report_metric "Difference/day/size", "Bytes", @current_size_dif
       report_metric "Difference/rate/elements", "Elements", @elements_rate.process(number)
-      report_metric "Difference/rate/size", "Elements", @size_rate.process(tot_size)
+      report_metric "Difference/rate/size", "Bytes", @size_rate.process(tot_size)
     end
 
   end
