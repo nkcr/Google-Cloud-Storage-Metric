@@ -46,8 +46,6 @@ module GCloudStorageAgent
     def poll_cycle
       number = @google.number(google_storage_bucket_name)
       tot_size = @google.size(google_storage_bucket_name)
-      report_metric "Total/size", "Bytes", tot_size
-      report_metric "Total/elements", "Elements", number
       current_day = Time.now.day
       if current_day == @next_day
         @next_day = (Time.now + 86400).day
@@ -57,6 +55,8 @@ module GCloudStorageAgent
         @last_size = tot_size
         puts "[#{Time.now}] i go"
       end
+      report_metric "Total/size", "Bytes", tot_size
+      report_metric "Total/elements", "Elements", number
       report_metric "Difference/day/elements", "Elements", @current_element_dif
       report_metric "Difference/day/size", "Bytes", @current_size_dif
       report_metric "Difference/rate/elements", "Elements", @elements_rate.process(number)
