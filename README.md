@@ -75,6 +75,6 @@ Licensed under the The MIT License (MIT).
 
 # Support
 
-For any support contact me on github. Report new issues if found.  
+For any support contact me on github. Please report new issues if found.  
 
 ----
