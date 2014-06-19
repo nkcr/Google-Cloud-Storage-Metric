@@ -30,6 +30,10 @@ A key point to keep backups in sight !
 - Ruby
 - Bundler
 
+For ubuntu and debian install bundler (and also ruby if needed) with :
+
+        $ sudo apt-get install bundler
+
 ----
 
 # Installation
