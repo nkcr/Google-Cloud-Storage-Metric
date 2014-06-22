@@ -1,3 +1,4 @@
 
 *.log
 *.p12
+config/newrelic_plugin.yml
