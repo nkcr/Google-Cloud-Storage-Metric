@@ -1,0 +1,28 @@
+# Please make sure to update the license_key information with the license key for your New Relic
+# account.
+#
+#
+newrelic:
+  #
+  # Update with your New Relic account license key:
+  #
+  license_key: 'XXXXXXXXXXXX'
+  #
+  # Set to '1' for verbose output, remove for normal output.
+  # All output goes to stdout/stderr.
+  #
+  # verbose: 1
+#
+# Agent Configuration:
+#
+agents:
+  # this is where configuration for agents belongs
+  gcstorage:
+    google_storage_key_path: "XXXXXXXXXX.p12"
+    google_storage_key_secret: "XXXXXX" 
+    google_storage_mail: "XXXXXXXXXXXXb@developer.gserviceaccount.com"
+    google_storage_project_id: "XXXXXXXXX"
+    google_storage_bucket_name: "XXXXXXXXXXXXXX" 
+    element_offset_alert: 100
+    # 1073741824 = 1024^3 = 1 Gigabytes
+    size_offset_alert: 1073741824
