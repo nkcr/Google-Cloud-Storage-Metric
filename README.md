@@ -54,6 +54,8 @@ This should install the newrelic and google SDK
 | google_storage_mail         | The email that goes with your _service account key_, like _xxxxxxx-xxxxx@developper.gserviceaccount.com_ |
 | google_storage_project_id   | The ID of your google Project (the one that contains your bucket) |
 | google_storage_bucket_name  | The name of your bucket (the one you wish to monitor) |
+| element_offset_alert        | Used to monitor the number of new elements per day. That value minus the number of new elements will be the value monitored. Like that we know there is a problem when when the value is below the expected one. |
+| size_offset_alert           | Like element_offset_alert but for the size. If you upload less than a gigabyte per day leave the default value |
     
 - And finally, run the script with
 
