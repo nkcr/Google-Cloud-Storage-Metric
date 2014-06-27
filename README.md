@@ -63,6 +63,13 @@ This should install the newrelic and google SDK
     
 ---
 
+# Alerts
+
+On newrelic, alerts only work when a value is above the expected one. To work with it, you can use _Alert/elements_ and _Alert/size_. Those values work with the ones in the config file : _element_offset_alert_ and _size_offset_alert_.  
+_Alert/elements_ is _element_offset_alert_ minus the number of new elements per day. If your expecting 4 new elements per day and _element_offset_alert_ = 100, you will set your alert threshold to 93. The same for _size_offset_alert_.
+
+---
+
 # Source
 
 Get the source [here](https://github.com/nkcr/Google-Cloud-Storage-Metric), download it as ZIP file and unzip it on your computer.
