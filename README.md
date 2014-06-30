@@ -60,6 +60,10 @@ This should install the newrelic and google SDK
 - And finally, run the script with
 
         $ ruby /path/to/script/folder/newrelic_gcstorage_agent.rb
+        
+- You can also launch it as a deamon with 
+
+        $ ./path/to/.../deamon.rb start
     
 ---
 
