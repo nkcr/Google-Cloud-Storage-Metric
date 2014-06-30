@@ -2,7 +2,11 @@ require 'google/api_client'
 
 class GClient < Google::APIClient
   def initialize(key_path,key_secret,key_email)
-    key = KeyUtils.load_from_pkcs12(File.expand_path("../#{key_path}", __FILE__), key_secret)
+    begin
+      key = KeyUtils.load_from_pkcs12(File.expand_path("../#{key_path}", __FILE__), key_secret)
+    rescue Exception => e
+      raise "Authentification with google cloud strage failed \n#{e.message}\n#{e.backtrace.inspect }"
+    end
     asserter = JWTAsserter.new(key_email,'https://www.googleapis.com/auth/devstorage.read_only',key)
     client = Google::APIClient.new(application_name: "auth for newrelic", application_version: "1.0")
     client.authorization = asserter.authorize()

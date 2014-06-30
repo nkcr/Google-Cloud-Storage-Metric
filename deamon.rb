@@ -15,7 +15,7 @@ class MyServer < DaemonSpawn::Base
   end
 end
 
-MyServer.spawn!(:log_file => 'server.log',
-                :pid_file => 'server.pid',
+MyServer.spawn!(:log_file => 'server_deamon.log',
+                :pid_file => 'server_deamon.pid',
                 :sync_log => true,
                 :working_dir => File.dirname(__FILE__))
